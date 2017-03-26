@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="gb2312">
+<title>美美哒的气泡背景</title>
+</head>
+
+<body>
+<canvas id="canvas" style="display:block; margin:0px auto; background-color:#FCF;"></canvas>
+
+<script>
+var canvas=document.getElementById("canvas");
+var context=canvas.getContext("2d");
+
+window.onload=function(){	
+    canvas.width=document.documentElement.clientWidth;
+	canvas.height=document.documentElement.clientHeight;
+	
+	context.globalAlpha=0.7;
+	
+	for(var i=0;i<100;i++){
+		
+		var r = Math.floor(Math.random() * 255);   //取整
+        var g = Math.floor(Math.random() * 255);   
+        var b = Math.floor(Math.random() * 255);  
+		var x=Math.random()*canvas.width;
+		var y=Math.random()*canvas.height;
+		var R=Math.random()*80;
+		
+        context.fillStyle = "rgb(" + r + "," + g + "," + b + ")";   	//字符串连接
+
+		
+		context.beginPath();                                 //每次fill要beginPath
+		context.arc(x,y,R,0,Math.PI*2);
+		context.fill();
+		}
+}
+</script>
+
+
+
+</body>
+</html>

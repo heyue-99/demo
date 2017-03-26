@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="gb2312">
+<title>离屏canvas 添加水印</title>
+</head>
+<body style="background-color:black;">
+<canvas id="canvas" style="border:1px solid #ccc;display:block;margin:20px auto;)">
+当前浏览器不支持canvas，请尝试使用最新版本的浏览器。
+</canvas>
+<input type="range" id="scale-range" min="0.5" max="2" step="0.01" value="1" style="margin:20px auto;display:block;width:600px;">
+<canvas id="watermark" style="display:none; margin:0px auto; border:1px solid #aaa;"></canvas>
+
+<script>
+
+	var canvas=document.getElementById("canvas");
+	var slider=document.getElementById("scale-range");
+	var context=canvas.getContext("2d");
+	
+	var watermark=document.getElementById("watermark");
+	var watermarkContext=watermark.getContext("2d");
+	
+    var image=new Image();
+	window.onload=function(){
+		canvas.width=800;
+		canvas.height=600;
+		var scale=slider.value;
+		image.src="../img/X教授（少）.jpg";
+		image.onload=function(){
+			drawImagebyscale(scale);
+			slider.onmousemove=function(){
+				scale=slider.value;
+				drawImagebyscale(scale);
+			}
+		}
+		watermark.width=400;
+		watermark.height=100;
+		watermarkContext.font="40px Arial";
+		watermarkContext.textBaseline="middle";
+		watermarkContext.fillStyle="rgba(255,255,255,0.5)";
+		watermarkContext.fillText("heyue (∩_∩)",170,70);
+	}
+	function drawImagebyscale(scale){
+		var imageWidth=canvas.width*scale;
+		var imageHeight=canvas.height*scale;
+		var dx=(canvas.width-imageWidth)/2;
+		var dy=(canvas.height-imageHeight)/2;
+		context.clearRect(0,0,canvas.width,canvas.height);
+		context.drawImage(image,dx,dy,imageWidth,imageHeight);
+		context.drawImage(watermark, canvas.width-watermark.width,canvas.height-watermark.height);
+	}
+	
+		
+</script>   
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="gb2312">
+<title>鼠标移动效果</title>
+<style>
+#div1{
+	width:300px;
+	height:300px;
+	margin:50px auto;
+	background:black;
+	color:#FFF;
+	cursor:pointer;
+	}
+#div1.hover{
+	color:black;
+	background:#0C0;
+	}
+
+#outer{
+	width:200px;
+	margin:10px auto;
+	}
+#tips{
+	padding:5px;
+	background:#ffefa4;
+	border:1px solid #f90;
+	display:none;
+	}
+
+</style>
+<script>
+window.onload=function(){
+	var oDiv=document.getElementById("div1");
+	var oTer=document.getElementById("outer");
+	var oTip=document.getElementById("tips");
+	oDiv.onmouseover=function(){
+		oDiv.className="hover"
+	};
+	oDiv.onmouseout=function(){
+		oDiv.className=" "
+	};
+	oTer.onmouseover=function(){
+		oTip.style.display="block"
+	};
+	oTer.onmouseout=function(){
+		oTip.style.display="none"
+	};
+}
+</script>
+</head>
+
+<body style="text-align:left; font-size:18px;">
+<div id="div1">鼠标移入改变样式，鼠标移出恢复样式。</div>
+
+<div id="outer">
+	<p><input type="checkbox" />两周内自动登陆</p>
+    <div id="tips">为了您的信息安全，请不要在网吧或公用电脑上使用此功能！</div>
+</div>
+
+</body>
+</html>

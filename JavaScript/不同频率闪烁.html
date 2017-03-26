@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="gb2312">
+<title>按一定频率闪烁</title>
+<style>
+body{
+	background-color:#FFF;}
+#myCanvas1{ 
+float:right;
+} 
+#myCanvas2{ 
+position:fixed;
+bottom:0px;
+left:10px;
+} 
+#myCanvas3{ 
+position:fixed;
+bottom:0px;
+right:10px;
+}
+
+#myCanvas4{ 
+position:fixed;
+top:300px;
+left:600px;
+}
+
+	
+</style>
+<script language="javascript"> 
+var i=1;
+function changeColor(){ 
+var color="white|red"; 
+color=color.split("|"); 
+document.getElementById("myCanvas").style.backgroundColor=color[i];
+i=(++i)%2;
+} 
+setInterval("changeColor()",83); 
+
+var a=1
+function changeColor1(){ 
+var color="white|red"; 
+color=color.split("|"); 
+document.getElementById("myCanvas1").style.backgroundColor=color[a];
+a=(++a)%2;
+} 
+setInterval("changeColor1()",66); 
+
+var b=1
+function changeColor2(){ 
+var color=["white","red"];
+document.getElementById("myCanvas2").style.backgroundColor=color[b];
+b=(++b)%2;
+} 
+setInterval("changeColor2()",74); 
+
+var c=1
+function changeColor3(){ 
+var color="white|red"; 
+color=color.split("|"); 
+document.getElementById("myCanvas3").style.backgroundColor=color[c];
+c=(++c)%2;
+} 
+setInterval("changeColor3()",50);
+
+var d=1;
+function changeColor4(){ 
+var color="white|red"; 
+color=color.split("|"); 
+document.getElementById("myCanvas4").style.backgroundColor=color[d];
+d=(++d)%2;
+} 
+setInterval("changeColor4()",58); 
+
+</script>
+</head>
+<body>
+  <div style="text-align:center">从上至下依次是频率为6HZ、7.5HZ、6.75HZ、10HZ、8.6HZ闪烁</div>
+  <canvas id="myCanvas" width="150" height="150"> </canvas>
+  <canvas id="myCanvas1" width="150" height="150"> </canvas>
+  <canvas id="myCanvas2" width="150" height="150"> </canvas>
+  <canvas id="myCanvas3" width="150" height="150"> </canvas>
+  <canvas id="myCanvas4" width="150" height="150"> </canvas>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="gb2312">
+<title>移动效果（按轨迹移动）</title>
+<style type="text/css">
+body,div{margin:0;padding:0;}
+div{position:absolute;width:145px;height:180px;background:no-repeat url(../img/1.jpg);top:100px;left:50px;}
+p,input{margin:10px;}
+</style>
+<script type="text/javascript">
+window.onload = function ()
+{
+	var oDiv = document.getElementsByTagName("div")[0];
+	
+	var aPos = [{x:oDiv.offsetLeft, y:oDiv.offsetTop}];
+	document.onmousedown = function (event)
+	{
+		var event = event || window.event;			
+		aPos.push({x:event.clientX, y:event.clientY});
+		document.onmousemove = function (event)
+		{
+			var event = event || window.event;
+			aPos.push({x:event.clientX, y:event.clientY});	
+			return false;
+		}
+		return false;
+	}
+	document.onmouseup = function ()
+	{
+		document.onmousemove = null;
+		oDiv.style.background = "url(../img/2.jpg) no-repeat";		
+		var timer = setInterval(function ()
+		{
+			if(aPos.length == 0)
+			{
+				clearInterval(timer);
+				oDiv.style.background = "url(../img/1.jpg) no-repeat";
+				return;	
+			};
+			oDiv.style.left = aPos[0].x + "px";
+			oDiv.style.top = aPos[0].y + "px";
+			aPos.shift();
+		}, 30);
+	};
+}
+
+
+</script>
+</head>
+<body>
+<p style="text-align:center">按住鼠标左键，在页面划动，人物将按照鼠标轨迹移动。</p>
+<div></div>
+</body>
+</html>

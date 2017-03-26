@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>用户按下键盘，显示keyCode</title>
+<style>
+body{
+	text-align:center;
+	font:30px/1.5;	
+}
+span{color:#999;}
+</style>
+<script type="text/javascript">
+window.onload = function ()
+{
+	var oP = document.getElementsByTagName("p")[0];	
+	document.onkeydown = function (event)
+	{
+		var event = event || window.event;
+		oP.innerHTML = event.keyCode;
+		return false
+	}
+}
+</script>
+</head>
+<body>
+<p style="margin:200px auto; font-size:26px">请按键盘 这里将显示您按下键的 keyCode</p>
+</body>
+</html>

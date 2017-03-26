@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="gb2312">
+<title>移动鼠标切换图片</title>
+<style>
+body,ul,li{margin:0;padding:0;}
+body{background:#000;}
+img{border:0;border-radius:3px;}
+ul{list-style-type:none;}
+#box{width:740px;border:5px solid #fff;overflow:hidden;zoom:1;background:#fff;border-radius:5px;margin:10px auto;padding:0 0 3px 3px;}
+#box li,#box li img{float:left;width:120px;height:120px;}
+#box li{margin:3px 3px 0 0;}
+#box li.first{position:relative;}
+#box li.first,#box li.first img{width:740px;height:480px;}
+</style>
+<script type="text/javascript">
+window.onload=function(){
+	var oImg=document.getElementsByTagName("img");
+	for(var i=1; i<oImg.length;i++){
+	oImg[i].onmouseover=function(){		
+       oImg[0].src=this.src.replace(/small/,"big");
+	}
+	}
+}
+		
+</script>
+</head>
+
+<body>
+<ul id="box">
+    <li class="first"><img src="../img/X1_big.jpg"></li>
+    <li><a href="javascript:;"><img src="../img/X1_small.jpg"></a></li>
+    <li><a href="javascript:;"><img src="../img/X2_small.jpg"></a></li>
+    <li><a href="javascript:;"><img src="../img/X3_small.jpg"></a></li>
+    <li><a href="javascript:;"><img src="../img/X4_small.jpg"></a></li>
+    <li><a href="javascript:;"><img src="../img/X5_small.jpg"></a></li>
+    <li><a href="javascript:;"><img src="../img/X6_small.jpg"></a></li>
+</ul>
+
+</body>
+</html>

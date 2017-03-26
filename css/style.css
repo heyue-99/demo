@@ -1,0 +1,18 @@
+body{
+	margin:30px 300px; 
+	font-size: 24px;
+}
+h1{
+	text-align: center;
+	margin-bottom:40px;
+	color: #5B5B5B;
+}
+li{
+	list-style: none;
+	margin-bottom: 20px;
+	margin-top: 10px;
+}
+a:hover{
+	text-decoration: none;
+	color:#F27D40;
+}

@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="gb2312">
+<title>为数组添加方法</title>
+<script>
+Array.prototype.sum=function(){
+	for(var i=sum=0;i<this.length;i++) sum+=this[i];
+	return sum
+};
+Array.prototype.maxNum=function(){
+	var mNum=this[0];
+	for(var i=0;i<this.length;i++){
+		if(this[i]>mNum) mNum=this[i];
+		}
+		return mNum
+}
+
+var arr=[1,2,3,4,5,6,7,8,9,10];
+alert(arr.join("+")+"="+arr.sum());
+alert(arr.join(" ")+"中最大的数为"+arr.maxNum());
+</script>
+
+			
+</head>
+
+<body>
+<p style="text-align:center;">为数组[1,2,3,4,5,6,7,8,9,10]添加求和、求最大值的方法</p>
+</body>
+</html>

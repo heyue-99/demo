@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="gb2312">
+<title>canvas文字</title>
+</head>
+
+<body>
+<canvas id="canvas" width="1000" height="600" style="border:#000 1px solid; display:block; margin:0px auto; background-color:#FCF;"></canvas>
+<script>
+var canvas=document.getElementById("canvas");
+var context=canvas.getContext("2d");
+
+context.fillStyle="#058";
+context.font="bold 120px Arial"
+context.shadowColor="gray"
+context.shadowOffsetX=10;
+context.shadowOffsetY=10;
+context.shadowBlur=5;
+context.textBaseline="middle";
+context.textAlign="center";
+
+//textBaseline textAlign都是基于fillText中的x和y 作为基线 在本图中就是canvas.width/2 和 canvas.height
+context.fillText("CANVAS",canvas.width/2, 
+                          canvas.height/2);                 
+						  
+
+</script>
+
+
+</body>
+</html>

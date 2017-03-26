@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="gb2312">
+<title>bootstrap插件之滚动监听和附加导航</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link href="../css/bootstrap2.min.css" rel="stylesheet" type="text/css">
+<script src="../js/jquery-1.11.3.min.js"></script>
+<script src="../js/bootstrap2.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("body").scrollspy();
+	})
+</script>
+<style>
+li{
+	margin:10px;
+}
+</style>
+</head>
+
+<body>
+<div class="row-fluid">
+<div class="span2" id="#menu" style="font-size:16px">
+<ul class="nav nav-list" data-spy="affix" data-offset-top="40">
+<li><a href="#tab1" >快银</a></li>
+<li><a href="#tab2" >风暴女</a></li>
+<li><a href="#tab3" >魔形女</a></li>
+<li><a href="#tab4" >天使</a></li>
+<li><a href="#tab5" >夜行者</a></li>
+<li><a href="#tab6" >X教授</a></li>
+</ul>
+</div>
+<div class="span10">
+<fieldset id="tab1">
+<legend>快银</legend>
+<p><img src="../img/kuaiyin.jpg" ></p>
+</fieldset>
+<fieldset id="tab2">
+<legend>风暴女</legend>
+<p><img src="../img/fengbao.jpg"></p>
+</fieldset>
+<fieldset id="tab3">
+<legend>魔形女</legend>
+<p><img src="../img/mystic.jpg"></p>
+</fieldset>
+<fieldset id="tab4">
+<legend>天使</legend>
+<p><img src="../img/tianshi.jpg"></p>
+</fieldset>
+<fieldset id="tab5">
+<legend>夜行者</legend>
+<p><img src="../img/yexingzhe.jpg" ></p>
+</fieldset>
+</fieldset>
+<fieldset id="tab6">
+<legend>X教授</legend>
+<p><img src="../img/Xprofessor.jpg" ></p>
+</fieldset>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="gb2312">
+<title>仿苹果电脑任务栏菜单</title>
+<style type="text/css">
+body{margin:0;padding:0}
+#menu{position:absolute;width:100%;bottom:0;text-align:center;}
+</style>
+<script type="text/javascript">
+window.onload = function ()
+{
+	var oMenu = document.getElementById("menu");
+	var oImg = oMenu.getElementsByTagName("img");
+	var oWidth = [];
+	var i = 0;
+	for(i=0;i<oImg.length;i++){
+		oWidth.push(oImg[i].offsetWidth);
+		oImg[i].width=parseInt(oImg[i].offsetWidth/2);
+	}
+	document.onmouseover=function(event){
+		var event=event||window.event;
+		for(i=0;i<oImg.length;i++){
+			var a=event.clientX-oImg[i].offsetLeft-oImg[i].offsetWidth*0.5;
+			var b=event.clientY-oImg[i].offsetTop-oMenu.offsetTop-oImg[i].offsetHeight*0.5;
+			var iScale = 1 - Math.sqrt(a * a + b * b) / 300;
+			if (iScale < 0.5) iScale = 0.5;
+			oImg[i].width = oWidth[i] * iScale;
+		}
+	}
+}
+
+</script>
+</head>
+<body>
+<div id="menu">
+	<img src="../img/1.png" />
+	<img src="../img/2.png" />
+	<img src="../img/3.png" />
+	<img src="../img/4.png" />
+	<img src="../img/5.png" />
+	<img src="../img/6.png" />
+	<img src="../img/7.png" />
+	<img src="../img/8.png" />
+</div>
+</body>
+</html>

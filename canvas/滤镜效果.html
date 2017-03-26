@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="gb2312">
+<title>滤镜效果</title>
+</head>
+
+<body>
+<div style="margin:60px auto; width:430px;">
+<canvas id="canvasa" width="210" height="250" ></canvas>
+<canvas id="canvasb" width="210" height="250" ></canvas>
+</div>
+
+<div style="text-align:center; font-size:24px;">
+<a href="javascript:turnGray()" style="text-decoration:none; margin-left:15px;">灰度滤镜</a>
+<a href="javascript:turnWhiteandBlack()" style="text-decoration:none; margin-left:15px;">黑白滤镜</a>
+<a href="javascript:turnReverse()" style="text-decoration:none; margin-left:15px;">反色滤镜</a>
+
+</div>
+
+<script>
+var canvasa=document.getElementById("canvasa");
+var contexta=canvasa.getContext("2d");
+
+var canvasb=document.getElementById("canvasb");
+var contextb=canvasb.getContext("2d");
+
+var image=new Image();
+
+window.onload=function(){
+	image.crossOrigin = '  '; 
+    image.src="http://lobbydata.com/Content/images/BlackBerry.jpg";
+    image.onload=function(){
+	contexta.drawImage(image,0,0,canvasa.width,canvasa.height);
+	}
+}
+
+function turnGray(){
+	var imageData=contexta.getImageData(0,0,canvasa.width,canvasa.height);
+	var pixelData=imageData.data;
+	
+	for(var i=0;i<canvasa.width*canvasa.height;i++){
+		var r=pixelData[i*4+0];
+		var g=pixelData[i*4+1];
+		var b=pixelData[i*4+2];
+		
+		var gray=0.3*r+0.59*g+0.11*b;
+		
+		pixelData[i*4+0]=gray;
+		pixelData[i*4+1]=gray;
+		pixelData[i*4+2]=gray;
+	}
+	contextb.putImageData(imageData,0,0,0,0,canvasb.width,canvasb.height);
+}
+
+function turnWhiteandBlack(){
+	var imageData=contexta.getImageData(0,0,canvasa.width,canvasa.height);
+	var pixelData=imageData.data;
+	
+	for(var i=0;i<canvasa.width*canvasa.height;i++){
+		var r=pixelData[i*4+0];
+		var g=pixelData[i*4+1];
+		var b=pixelData[i*4+2];
+		
+		var gray=0.3*r+0.59*g+0.11*b;
+		if(gray>255/2){
+			v=255;
+		}else{
+			v=0;
+		}
+		
+		pixelData[i*4+0]=v;
+		pixelData[i*4+1]=v;
+		pixelData[i*4+2]=v;
+	}
+	contextb.putImageData(imageData,0,0,0,0,canvasb.width,canvasb.height);
+}		
+
+function turnReverse(){
+	var imageData=contexta.getImageData(0,0,canvasa.width,canvasa.height);
+	var pixelData=imageData.data;
+	
+	for(var i=0;i<canvasa.width*canvasa.height;i++){
+		var r=pixelData[i*4+0];
+		var g=pixelData[i*4+1];
+		var b=pixelData[i*4+2];
+		
+		pixelData[i*4+0]=255-r;
+		pixelData[i*4+1]=255-g;
+		pixelData[i*4+2]=255-b;
+	}
+	contextb.putImageData(imageData,0,0,0,0,canvasb.width,canvasb.height);
+}		
+
+</script>
+	
+
+</body>
+</html>
