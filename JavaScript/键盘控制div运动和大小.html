@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="gb2312">
+<title>键盘控制div运动和大小</title>
+<style type="text/css">
+html,body{overflow:hidden;}
+body{margin:0;padding:0;}
+pre{color:green;padding:10px 15px;background:#f0f0f0;border:1px dotted #333;font:12px/1.5 Courier New;margin:12px;}
+span{color:#999;}
+#box{position:absolute;top:50px;left:300px;width:100px;height:100px;background:red;}
+</style>
+<script type="text/javascript">
+window.onload = function ()
+{
+	var oBox = document.getElementById("box");
+	var oLeft = oTop = oRight = oBottom = oCtrlKey = false;
+	
+	setInterval(function ()
+	{
+		if(oLeft) {oBox.style.left=oBox.offsetLeft-10+"px";}
+		else if(oRight){oBox.style.left=oBox.offsetLeft+10+"px";}
+		if(oTop){oBox.style.top=oBox.offsetTop-10+"px";}
+		else if(oBottom){oBox.style.top=oBox.offsetTop+10+"px";}
+		//防止溢出
+		limit();
+	},30);	
+	
+	document.onkeydown = function (event)
+	{
+		var event = event || window.event;
+		
+		switch (event.keyCode)
+		{
+			case 37:
+			oLeft=true;
+			break;
+			case 38:
+			if(event.ctrlKey) {
+				
+				var oldWidth = oBox.offsetWidth;
+				var oldHeight = oBox.offsetHeight;
+					
+				oBox.style.width = oBox.offsetWidth * 1.5 + "px";
+				oBox.style.height = oBox.offsetHeight * 1.5 + "px";				
+					
+				oBox.style.left = oBox.offsetLeft - (oBox.offsetWidth - oldWidth) / 2 + "px";
+				oBox.style.top = oBox.offsetTop - (oBox.offsetHeight - oldHeight) / 2 + "px";
+				break;
+			}
+			oTop=true;
+			break;
+			case 39:
+			oRight=true;
+			break;
+			case 40:
+			if(event.ctrlKey) {
+				var oldWidth = oBox.offsetWidth;
+				var oldHeight = oBox.offsetHeight;
+					
+				oBox.style.width = oBox.offsetWidth * 0.75 + "px";
+				oBox.style.height = oBox.offsetHeight * 0.75 + "px";				
+					
+				oBox.style.left = oBox.offsetLeft - (oBox.offsetWidth - oldWidth) / 2 + "px";
+				oBox.style.top = oBox.offsetTop - (oBox.offsetHeight - oldHeight) / 2 + "px";
+				break;
+			}
+			oBottom=true;
+			break;
+		}
+		return false
+	};
+
+	document.onkeyup = function (event)
+	{
+		switch ((event || window.event).keyCode)
+		{
+			case 37:
+			oLeft=false;
+			break;
+			case 38:
+			oTop=false;
+			break;
+			case 39:
+			oRight=false;
+			break;
+			case 40:
+			oBottom=false;
+			break;
+		}
+	};
+
+	//防止溢出
+	function limit()
+	{
+		var wh=[document.documentElement.clientWidth, document.documentElement.clientHeight];
+		oBox.offsetLeft<=0 && (oBox.style.left=0);
+		wh[0]-oBox.offsetLeft-oBox.offsetWidth<=0 && (oBox.style.left=wh[0]-oBox.offsetWidth+"px");
+		oBox.offsetTop<=0 && (oBox.style.top=0);
+		wh[1]-oBox.offsetTop-oBox.offsetHeight<=0 && (oBox.style.top=wh[1]-oBox.offsetHeight+"px");
+	}
+};
+</script>
+</head>
+<body>
+<pre style="width:300px">
+红色方块为键盘操作区域，您可以进行如下操作：
+
+上：↑ 下：↓ 左：← 右：→
+
+Ctrl + ↑ : 放大
+Ctrl + ↓ : 缩小
+</pre>
+<div id="box"></div>
+</body>
+</html>

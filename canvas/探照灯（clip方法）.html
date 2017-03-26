@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="gb2312">
+<title>探照灯（clip方法）</title>
+</head>
+
+<body>
+<canvas id="canvas" width="800" height="600" style="border:#000 1px solid; display:block; margin:0px auto; background-color:#FCF;"></canvas>
+
+<script>
+var circular ={x:400,y:300,radius:150,vx:Math.random()*5+5,vy:Math.random()*5+5};
+
+window.onload=function(){
+	
+	var canvas=document.getElementById("canvas");
+	var context=canvas.getContext("2d");
+    
+	setInterval(function(){
+	drawBall(context);
+	update(canvas.width,canvas.height);
+	},40);	
+}
+
+
+//该方法用来绘制图形
+function drawBall(cxt){
+	var canvas = cxt.canvas;
+	//清空画布
+	cxt.clearRect(0,0,canvas.width,canvas.height);
+	
+	cxt.save();
+
+	//绘制一个与当前canvas一样大的矩形
+	cxt.beginPath();
+	cxt.fillStyle="#000";//黑色背景
+	cxt.fillRect(0,0,canvas.width,canvas.height);
+	cxt.closePath();
+	
+	//从原来的画布中剪辑出一个圆形
+	cxt.beginPath();
+	cxt.arc(circular.x,circular.y,circular.radius,0,Math.PI*2);
+	//cxt.fillStyle="#fff";//白色背景
+	//cxt.fill();
+	//clip():从原始画布中剪切任意形状和尺寸。
+	//一旦剪切了某个区域，则所有之后的绘图都会被限制在被剪切的区域内（不能访问画布上的其他区域）
+	cxt.clip();
+	cxt.closePath();
+	
+	//绘制内容
+	var image=new Image();
+	image.src="../img/琴.jpg";
+	cxt.drawImage(image,0,0,canvas.width,canvas.height);
+
+	cxt.restore();
+}
+	
+//更新圆形运动路径
+function update(width,height){
+	circular.x +=circular.vx;
+	circular.y +=circular.vy;
+
+	if(circular.x-circular.radius<=0){
+		circular.vx = -circular.vx;
+		circular.x=circular.radius;
+	}
+
+	if(circular.x+circular.radius>=width){
+		circular.vx = -circular.vx;
+		circular.x=width-circular.radius;
+	}
+
+	if(circular.y-circular.radius<=0){
+		circular.vy = -circular.vy;
+		circular.y=circular.radius;
+	}
+
+	if(circular.y+circular.radius>=height){
+		circular.vy = -circular.vy;
+		circular.y=height-circular.radius;
+	}
+}
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="gb2312">
+<title>简易选项卡</title>
+<style>
+body,ul,li{margin:0;padding:0;}
+body{font:16px/1.5 Tahoma;}
+#outer{width:850px;margin:30px auto;}
+#tab{overflow:hidden;zoom:1;background:#999;border:1px solid #000;}
+#tab li{float:left;color:#000;height:40px;cursor:pointer;line-height:30px;list-style-type:none;padding:0 20px;}
+#tab li.current{color:#000;background:#FFF;}
+#content{border:1px solid #000;border-top-width:0;}
+#content img{display:none;margin:0 0px;padding:0px 0; max-width:100%}
+</style>
+<script>
+window.onload=function(){
+	var oTab=document.getElementById("tab").getElementsByTagName("li");
+	var oCtn=document.getElementById("content").getElementsByTagName("img");
+	for(var i=0;i<oTab.length;i++){
+		oTab[i].index=i;
+	    oTab[i].onmouseover=function(){
+		for(var n=0;n<oTab.length;n++)  oTab[n].className=" ";
+		this.className="current";
+		for(var m=0;m<oCtn.length;m++)  oCtn[m].style.display="none";
+		oCtn[this.index].style.display="block"
+		}
+	}
+}
+	
+</script>		
+
+</head>
+
+<body>
+<div id="outer">
+    <ul id="tab">
+        <li class="current">暴风女</li>
+        <li>魔形女</li>
+        <li>夜行者</li>
+    </ul>
+    <div id="content">
+       <img style="display:block;" src="../img/fengbao.jpg">
+       <img src="../img/mystic.jpg">
+       <img src="../img/yexingzhe.jpg">         
+    </div>
+</div>
+
+</body>
+</html>

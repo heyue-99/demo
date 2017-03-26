@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="gb2312">
+<title>离屏canvas 放大镜</title>
+</head>
+<body>
+<p style="text-align:center;;">尝试点击并拖动鼠标 放大点击区域</p>
+<canvas id="canvas" style="display:block;margin:10px auto;">
+当前浏览器不支持canvas，请尝试使用最新版本的浏览器。
+</canvas>
+<canvas id="offcanvas" style="display:none">
+</canvas>
+<script>
+var canvas=document.getElementById("canvas");
+var context=canvas.getContext("2d");
+var image=new Image();
+var scale;
+var point=[];
+var isdown=false;
+
+var offcanvas=document.getElementById("offcanvas");
+var offcontext=offcanvas.getContext("2d");
+
+window.onload=function(){
+	canvas.width="800";
+	canvas.height="600";
+	image.src="../img/快银.jpg";
+	
+	image.onload=function(){
+		offcanvas.width=image.width;
+		offcanvas.height=image.height;
+		scale=offcanvas.width/canvas.width;
+		
+		context.drawImage(image,0,0,canvas.width,canvas.height);
+		offcontext.drawImage(image,0,0);
+	}
+}
+
+canvas.onmousedown=function(e){
+	isdown=true;
+	e.preventDefault();
+	point=[e.offsetX,e.offsetY];
+	drawMagnifier(true,point);
+}
+
+canvas.onmouseup=function(e){
+	isdown=false;
+	e.preventDefault();
+	drawMagnifier(false);
+}
+
+canvas.onmouseout=function(e){
+	isdown=false;
+	e.preventDefault();
+	drawMagnifier(false);
+}
+
+canvas.onmousemove=function(e){
+	e.preventDefault();
+    point=[e.offsetX,e.offsetY];
+	isdown && (drawMagnifier(true,point));
+}
+
+function drawMagnifier(isShow,point){
+	context.clearRect(0,0,canvas.width,canvas.height);
+	context.drawImage(image,0,0,canvas.width,canvas.height);
+    if(isShow==true){
+		doMagnifier(point);
+	}
+}
+		
+function doMagnifier(point){
+	var largeImageX=point[0]*scale;
+	var largeImageY=point[1]*scale
+	
+	var r=120;
+	
+	var sx=largeImageX-r;
+	var sy=largeImageY-r;
+	
+	var dx=point[0]-r;
+	var dy=point[1]-r;
+	
+	context.save();
+	
+	context.beginPath();
+	context.arc(point[0],point[1],r,0,2*Math.PI);	
+	context.clip();   //一旦剪切了某个区域，则所有之后的绘图都会被限制在被剪切的区域内（不能访问画布上的其他区域）。您也可以在使用 clip() 方法前通过使用 save() 方法对当前画布区域进行保存，并在以后的任意时间对其进行恢复（通过 restore() 方法）。
+	
+	context.drawImage(offcanvas,sx,sy,2*r,2*r,dx,dy,2*r,2*r);
+	
+	context.restore();
+}
+	
+		
+</script>   
+
+</body>
+</html>

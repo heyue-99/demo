@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="gb2312">
+<title>移动效果（鼠标点击）</title>
+<style type="text/css">
+body,div{margin:0;padding:0; }
+div{position:absolute;width:150px;height:200px;background:no-repeat url(../img/1.jpg);top:100px;left:50px;}
+p,input{margin:10px;}
+</style>
+<script type="text/javascript">
+window.onload = function ()
+{
+	var oDiv = document.getElementsByTagName("div")[0];	
+document.onclick = function (event)
+{
+	var event = event || window.event;
+	oDiv.style.background = "url(../img/2.jpg) no-repeat";
+	startMove(oDiv, {x:event.clientX, y:event.clientY}, function(){oDiv.style.background = "url(../img/1.jpg) no-repeat"});
+	return false;
+	}	
+};
+
+function startMove(obj, oTarget, fnEnd)
+{
+	clearInterval(obj.timer);
+	obj.timer = setInterval(function ()
+	{
+		doMove(obj, oTarget, fnEnd)	
+	}, 30)	
+}
+function doMove(obj, oTarget, fnEnd)
+{
+	var iX = (oTarget.x - obj.offsetLeft) / 5;
+	var iY = (oTarget.y - obj.offsetTop) / 5;
+	iX = iX > 0 ? Math.ceil(iX) : Math.floor(iX);
+	iY = iY > 0 ? Math.ceil(iY) : Math.floor(iY);
+	if (oTarget.x == obj.offsetLeft && oTarget.y == obj.offsetTop)
+	{
+		clearInterval(obj.timer);
+		fnEnd && fnEnd();	
+	}
+	else
+	{
+		obj.style.left = obj.offsetLeft + iX + "px";
+		obj.style.top = obj.offsetTop + iY + "px";	
+	}
+}
+
+</script>
+</head>
+<body>
+<p style="text-align:center">鼠标点击页面， 人物将移动至鼠标位置！</p>
+<div></div>
+</body>
+</html>

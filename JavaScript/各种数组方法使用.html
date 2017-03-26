@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="gb2312">
+<title>各种数组方法使用</title>
+<style>
+button{
+	margin:10px 0px;
+	padding:3px 8px;
+}
+span{
+	margin:10px 30px;
+}
+</style>
+<script>
+window.onload=function(){
+   var arr = new Array();
+   arr=[1,2,3,4,5,6,7,8,9,10];
+   var oSpan=document.getElementsByTagName("span");
+   var oBtn=document.getElementsByTagName("button");
+   oBtn[0].onclick=function(){
+	 arr.shift();
+	 oSpan[0].innerHTML=arr.join(" ");
+   }
+   oBtn[1].onclick=function(){
+	 arr.unshift("1");
+	 oSpan[1].innerHTML=arr.join(" ");
+   }
+   oBtn[2].onclick=function(){
+	 arr.pop();
+	 oSpan[2].innerHTML=arr.join(" ");
+   }
+   oBtn[3].onclick=function(){
+	 arr.push("10");
+	 oSpan[3].innerHTML=arr.join(" ");
+   }
+   oBtn[4].onclick=function(){
+	 arr=arr.concat(arr);
+	 oSpan[4].innerHTML=arr.join(" ");
+   }
+   oBtn[5].onclick=function(){
+	 arr=[1,2,3,4,5,6,7,8,9,10];
+	 arr.splice(0,3);
+	 oSpan[5].innerHTML=arr.join(" ");
+   }
+   oBtn[6].onclick=function(){
+	 arr=[1,2,3,4,5,6,7,8,9,10];
+	 arr.splice(1,2);
+	 oSpan[6].innerHTML=arr.join(" ");
+   }
+   oBtn[7].onclick=function(){
+	 arr=[1,2,3,4,5,6,7,8,9,10];
+	 arr.splice(1,2,"11","12");
+	 oSpan[7].innerHTML=arr.join(" ");
+   }
+    oBtn[8].onclick=function(){
+	 arr=[1,2,3,4,5,6,7,8,9,10];
+	 arr.splice(2,0,"13");
+	 oSpan[8].innerHTML=arr.join(" ");
+   }
+}
+
+</script>
+</head>
+
+<body>
+<fieldset style="margin:20px 400px;">
+<p style="margin:10px 5px 5px 5px;">数组：1 2 3 4 5 6 7 8 9 10</p>
+<button>删除第一项</button><span> </span><br>
+<button>添加第一项</button><span> </span><br>
+<button>删除最后一项</button><span> </span><br>
+<button>添加最后一项</button><span> </span><br>
+<button>复制</button><span> </span><br>
+<button>删除前三项</button><span> </span><br>
+<button>删除二到三项</button><span> </span><br>
+<button>替换二三项</button><span> </span><br>
+<button>在第二项后插入</button><span> </span><br>
+</fieldset>
+</body>
+</html>

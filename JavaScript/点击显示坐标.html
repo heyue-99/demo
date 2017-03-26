@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>显示单击的坐标</title>
+<style>
+p{
+	border:#F00 1px solid;
+	width:300px;
+	padding:5px 0px;
+	text-align:center;
+	font-size:24px;
+}
+</style>
+<script type="text/javascript">
+document.onclick = function (event)
+{
+	var event = event || window.event;	
+	alert("坐标：[" + event.clientX + ", " + event.clientY + "]")
+}
+</script>
+</head>
+<body>
+<div style="margin:200px 520px">
+<p>鼠标单击显示点击坐标</p>
+</div>
+</body>
+</html>

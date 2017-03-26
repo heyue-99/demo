@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="gb2312">
+<title>控制div属性</title>
+<style>
+input{margin:0px 10px;}
+#outer{width:800px;margin:0 auto;padding:0;text-align:center;}
+#div1{width:200px;height:200px;background:green;margin:30px auto;display:block;}
+</style>
+<script>
+var changeStyle=function(elem,attr,value){
+		elem.style[attr]=value
+	};
+	
+window.onload=function(){
+	var Obtn=document.getElementsByTagName("input");
+	var Odiv=document.getElementById("div1");
+	var Oattr=["width","height","background","display","display"];
+	var Oval=["300px","300px","yellow","none","block"]
+	
+	for(var i=0;i<Obtn.length;i++){
+		Obtn[i].index=i;
+		Obtn[i].onclick=function(){
+			if(this.index==Obtn.length-1){
+				Odiv.style.cssText=" ";
+			}
+			changeStyle(Odiv,Oattr[this.index],Oval[this.index]);
+			
+		}
+	}
+}
+</script>
+				
+</head>
+
+<body>
+<div id="outer" style="margin:100px auto">
+<input type="button" value="变宽" />
+<input type="button" value="变高" />
+<input type="button" value="变色" />
+<input type="button" value="隐藏" />
+<input type="button" value="重置" />
+<div id="div1"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="gb2312">
+<title>数字判断和计算</title>
+<style>
+body{font:12px/1.5 arial;text-align:center;}
+.f-text{width:80px;border:1px solid #ccc;background:#f0f0f0;font-family:inherit;padding:3px; margin:20px 10px;}
+span{color:red;padding-right:10px;font-weight:700;}
+strong{padding:0 10px;}
+.f-btn{margin:0 10px;}
+
+</style>
+<script type="text/javascript">
+window.onload = function ()
+{
+	var oIput=document.getElementsByTagName("input");
+	var oPan=document.getElementsByTagName("span");
+	for(var i=0;i<oIput.length;i++){
+	oIput[i].onkeyup=function(){
+		this.value=this.value.replace(/\D/,"");
+	}
+	}
+	oIput[2].onclick=function(){
+		if(oIput[0].value==""||oIput[1].value=="") alert("请输入数字！");
+		else oPan[0].innerHTML=parseInt(oIput[0].value)+parseInt(oIput[1].value);
+	}
+	oIput[5].onclick=function(){
+		if(oIput[3].value==""||oIput[4].value=="") alert("请输入数字！");
+		else oPan[1].innerHTML=Math.max(oIput[3].value,oIput[4].value);
+	}
+	oIput[7].onclick=function(){
+		if(oIput[6].value=="") alert("请输入数字！");
+		else{
+			var patt=/^\d{2}$/;
+		    alert(patt.test(parseInt(oIput[6].value))?"您输入正确！":"您输入的是"+oIput[6].value.length+"位数！"
+			);
+		}
+	}
+};
+
+</script>
+</head>
+
+<body>
+<div style="margin:100px auto">
+<input type="text" class="f-text" /><strong>+</strong><input type="text" class="f-text" /><strong>=</strong><span>?</span><input type="button" value="求和" /><br>
+<input type="text" class="f-text" /><strong>vs</strong><input type="text" class="f-text" /><input type="button" value="最大的数是 &raquo;" class="f-btn" /><span>？</span><br>
+<input type="text" class="f-text" /><input type="button" value="是否为两位数" />
+</div>
+
+</body>
+</html>

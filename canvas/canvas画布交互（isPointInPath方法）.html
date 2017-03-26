@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="gb2312">
+<title>canvas画布交互（isPointInPath方法）</title>
+</head>
+
+<body>
+
+<div style="text-align:center"><p>鼠标移动到圆圈内会使圆圈变色 鼠标移出画布恢复</p></div>
+<canvas id="canvas" width="800" height="600" style="border:#000 1px solid; display:block; margin:20px auto; background-color:#FCF;"></canvas>
+
+<script>
+var canvas=document.getElementById("canvas");
+var context=canvas.getContext("2d");
+var bal=[];
+
+window.onload=function(){
+	for(var i=0;i<10;i++){
+		var ball={x:Math.random()*canvas.width, y:Math.random()*canvas.height, r:Math.random()*40+10};
+		bal[i]=ball;
+	}
+	draw();
+	canvas.addEventListener("mousemove",changeColor);
+   	canvas.addEventListener("mouseout",restore);
+
+}
+function draw(){
+	for(var i=0;i<bal.length;i++){
+		context.beginPath();
+		context.arc(bal[i].x,bal[i].y,bal[i].r,0,Math.PI*2);
+		context.fillStyle="rgba(0,0,255,0.6)";
+		context.fill();
+	}
+}
+function changeColor(event){
+	var event=event||window.event;
+	var sx=event.offsetX;
+	var sy=event.offsetY;
+	for(var i=0;i<bal.length;i++){
+		context.beginPath();
+		context.arc(bal[i].x,bal[i].y,bal[i].r,0,Math.PI*2);
+		if(context.isPointInPath(sx,sy)){
+			context.fillStyle="rgba(255,0,0,0.6)";
+			context.fill();
+		}
+	}
+}
+function restore(){
+	context.clearRect(0,0,canvas.width,canvas.height);
+	for(var i=0;i<bal.length;i++){
+		context.beginPath();
+		context.arc(bal[i].x,bal[i].y,bal[i].r,0,Math.PI*2);
+		context.fillStyle="rgba(0,0,255,0.6)";
+		context.fill();
+	}
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="gb2312">
+<title>简单下拉框</title>
+<style>
+body,ul,li,button{margin:0;padding:0;}
+body{font:12px/1.5 Tahoma;}
+button{cursor:pointer;}
+#outer{width:70px;margin:100px auto;}
+#list{margin-top:5px;background:#fff;border:1px solid #9a99ff;display:none;}
+#list li{width:100%;line-height:24px;display:inline-block;vertical-align:top;}
+#close{border-top:1px solid #9a99ff;}
+#list li a{color:#00c;padding:0 5px;display:block;text-decoration:none;}
+#list li a:hover{background:#d9e1f6;}
+</style>
+<script>
+window.onload=function(){
+	var oBtn=document.getElementsByTagName("button")[0];
+	var oClo=document.getElementById("close");
+	var oLis=document.getElementById("list");
+	oBtn.onclick=function(){
+		oLis.style.display=oLis.style.display=="block"?"none":"block"
+	};
+	oClo.onclick=function(){
+		oLis.style.display="none"
+	};
+}
+</script>	
+
+</head>
+
+<body>
+<div id="outer">
+<button>点击我啦</button>
+<ul id="list">
+<li><a href="javascript:;">项目1</a></li>
+<li><a href="javascript:;">项目2</a></li>
+<li id="close"><a href="javascript:;">关闭</a></li>
+</ul>
+</div>
+</body>
+</html>
