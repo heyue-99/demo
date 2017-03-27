@@ -1,13 +1,13 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="gb2312">
-<title>ÀëÆÁcanvas ·Å´ó¾µ</title>
+<meta charset="UTF-8">
+<title>ç¦»å±canvas æ”¾å¤§é•œ</title>
 </head>
 <body>
-<p style="text-align:center;;">³¢ÊÔµã»÷²¢ÍÏ¶¯Êó±ê ·Å´óµã»÷ÇøÓò</p>
+<p style="text-align:center;;">å°è¯•ç‚¹å‡»å¹¶æ‹–åŠ¨é¼ æ ‡ æ”¾å¤§ç‚¹å‡»åŒºåŸŸ</p>
 <canvas id="canvas" style="display:block;margin:10px auto;">
-µ±Ç°ä¯ÀÀÆ÷²»Ö§³Öcanvas£¬Çë³¢ÊÔÊ¹ÓÃ×îÐÂ°æ±¾µÄä¯ÀÀÆ÷¡£
+å½“å‰æµè§ˆå™¨ä¸æ”¯æŒcanvasï¼Œè¯·å°è¯•ä½¿ç”¨æœ€æ–°ç‰ˆæœ¬çš„æµè§ˆå™¨ã€‚
 </canvas>
 <canvas id="offcanvas" style="display:none">
 </canvas>
@@ -25,7 +25,7 @@ var offcontext=offcanvas.getContext("2d");
 window.onload=function(){
 	canvas.width="800";
 	canvas.height="600";
-	image.src="../img/¿ìÒø.jpg";
+	image.src="../img/å¿«é“¶.jpg";
 	
 	image.onload=function(){
 		offcanvas.width=image.width;
@@ -86,7 +86,7 @@ function doMagnifier(point){
 	
 	context.beginPath();
 	context.arc(point[0],point[1],r,0,2*Math.PI);	
-	context.clip();   //Ò»µ©¼ôÇÐÁËÄ³¸öÇøÓò£¬ÔòËùÓÐÖ®ºóµÄ»æÍ¼¶¼»á±»ÏÞÖÆÔÚ±»¼ôÇÐµÄÇøÓòÄÚ£¨²»ÄÜ·ÃÎÊ»­²¼ÉÏµÄÆäËûÇøÓò£©¡£ÄúÒ²¿ÉÒÔÔÚÊ¹ÓÃ clip() ·½·¨Ç°Í¨¹ýÊ¹ÓÃ save() ·½·¨¶Ôµ±Ç°»­²¼ÇøÓò½øÐÐ±£´æ£¬²¢ÔÚÒÔºóµÄÈÎÒâÊ±¼ä¶ÔÆä½øÐÐ»Ö¸´£¨Í¨¹ý restore() ·½·¨£©¡£
+	context.clip();   //ä¸€æ—¦å‰ªåˆ‡äº†æŸä¸ªåŒºåŸŸï¼Œåˆ™æ‰€æœ‰ä¹‹åŽçš„ç»˜å›¾éƒ½ä¼šè¢«é™åˆ¶åœ¨è¢«å‰ªåˆ‡çš„åŒºåŸŸå†…ï¼ˆä¸èƒ½è®¿é—®ç”»å¸ƒä¸Šçš„å…¶ä»–åŒºåŸŸï¼‰ã€‚æ‚¨ä¹Ÿå¯ä»¥åœ¨ä½¿ç”¨ clip() æ–¹æ³•å‰é€šè¿‡ä½¿ç”¨ save() æ–¹æ³•å¯¹å½“å‰ç”»å¸ƒåŒºåŸŸè¿›è¡Œä¿å­˜ï¼Œå¹¶åœ¨ä»¥åŽçš„ä»»æ„æ—¶é—´å¯¹å…¶è¿›è¡Œæ¢å¤ï¼ˆé€šè¿‡ restore() æ–¹æ³•ï¼‰ã€‚
 	
 	context.drawImage(offcanvas,sx,sy,2*r,2*r,dx,dy,2*r,2*r);
 	
