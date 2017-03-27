@@ -1,8 +1,8 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="gb2312">
-<title>×Ô¶¨ÒåÓÒ¼ü²Ëµ¥</title>
+<meta charset="UTF-8">
+<title>è‡ªå®šä¹‰å³é”®èœå•</title>
 <style type="text/css">
 body{text-align:center}
 body{font:12px/24px arial;}
@@ -16,9 +16,9 @@ window.onload = function ()
 {
 	var oMenu = document.getElementById("menu");
 	var oLi = oMenu.getElementsByTagName("li");
-	//¼ÓÔØºóÒş²Ø×Ô¶¨ÒåÓÒ¼ü²Ëµ¥
+	//åŠ è½½åéšè—è‡ªå®šä¹‰å³é”®èœå•
 	oMenu.style.display="none";
-	//²Ëµ¥Êó±êÒÆÈë/ÒÆ³öÑùÊ½
+	//èœå•é¼ æ ‡ç§»å…¥/ç§»å‡ºæ ·å¼
 	for(var i=0;i<oLi.length;i++){
 		oLi[i].onmouseover=function(){
 			this.className="active";
@@ -28,7 +28,7 @@ window.onload = function ()
 		}
 	}
 		
-	//×Ô¶¨Òå²Ëµ¥
+	//è‡ªå®šä¹‰èœå•
 	document.oncontextmenu=function(event){
 		oMenu.style.display="block";
 		var event=event||window.event;
@@ -36,7 +36,7 @@ window.onload = function ()
 		oMenu.style.left=event.clientX+"px";
 		return false;
 	}
-	//Ò³Ãæµã»÷ºó×Ô¶¨Òå²Ëµ¥ÏûÊ§
+	//é¡µé¢ç‚¹å‡»åè‡ªå®šä¹‰èœå•æ¶ˆå¤±
 	document.onclick=function(){
 		oMenu.style.display="none";
 	}
@@ -44,11 +44,11 @@ window.onload = function ()
 </script>
 </head>
 <body>
-<p style="margin-top:200px; font-size:18px;">×Ô¶¨ÒåÓÒ¼ü²Ëµ¥£¬ÇëÔÚÒ³Ãæµã»÷ÓÒ¼ü²é¿´Ğ§¹û¡£</p>
+<p style="margin-top:200px; font-size:18px;">è‡ªå®šä¹‰å³é”®èœå•ï¼Œè¯·åœ¨é¡µé¢ç‚¹å‡»å³é”®æŸ¥çœ‹æ•ˆæœã€‚</p>
 <ul id="menu">
-    <li><a href="javascript:;">¼ôÇĞ</a></li>
-    <li><a href="javascript:;">¸´ÖÆ</a></li>
-    <li><a href="javascript:;">Õ³Ìù</a></li>
+    <li><a href="javascript:;">å‰ªåˆ‡</a></li>
+    <li><a href="javascript:;">å¤åˆ¶</a></li>
+    <li><a href="javascript:;">ç²˜è´´</a></li>
 </ul>
 </body>
 </html>
