@@ -1,12 +1,12 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="gb2312">
-<title>ÀëÆÁcanvas Ìí¼ÓË®Ó¡</title>
+<meta charset="UTF-8">
+<title>ç¦»å±canvas æ·»åŠ æ°´å°</title>
 </head>
 <body style="background-color:black;">
 <canvas id="canvas" style="border:1px solid #ccc;display:block;margin:20px auto;)">
-µ±Ç°ä¯ÀÀÆ÷²»Ö§³Öcanvas£¬Çë³¢ÊÔÊ¹ÓÃ×îĞÂ°æ±¾µÄä¯ÀÀÆ÷¡£
+å½“å‰æµè§ˆå™¨ä¸æ”¯æŒcanvasï¼Œè¯·å°è¯•ä½¿ç”¨æœ€æ–°ç‰ˆæœ¬çš„æµè§ˆå™¨ã€‚
 </canvas>
 <input type="range" id="scale-range" min="0.5" max="2" step="0.01" value="1" style="margin:20px auto;display:block;width:600px;">
 <canvas id="watermark" style="display:none; margin:0px auto; border:1px solid #aaa;"></canvas>
@@ -25,7 +25,7 @@
 		canvas.width=800;
 		canvas.height=600;
 		var scale=slider.value;
-		image.src="../img/X½ÌÊÚ£¨ÉÙ£©.jpg";
+		image.src="../img/Xæ•™æˆï¼ˆå°‘ï¼‰.jpg";
 		image.onload=function(){
 			drawImagebyscale(scale);
 			slider.onmousemove=function(){
@@ -38,7 +38,7 @@
 		watermarkContext.font="40px Arial";
 		watermarkContext.textBaseline="middle";
 		watermarkContext.fillStyle="rgba(255,255,255,0.5)";
-		watermarkContext.fillText("heyue (¡É_¡É)",170,70);
+		watermarkContext.fillText("heyue (âˆ©_âˆ©)",170,70);
 	}
 	function drawImagebyscale(scale){
 		var imageWidth=canvas.width*scale;
