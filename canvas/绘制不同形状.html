@@ -1,8 +1,8 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="gb2312">
-<title>不同形状的绘制</title>
+<meta charset="UTF-8">
+<title>涓嶅悓褰㈢姸鐨勭粯鍒�</title>
 </head>
 
 <body>
@@ -11,7 +11,7 @@
 var canvas=document.getElementById("canvas");
 var context=canvas.getContext("2d");
 
-//直线
+//鐩寸嚎
 context.beginPath();
 context.moveTo(50,50);
 context.lineTo(250,250);
@@ -21,7 +21,7 @@ context.strokeStyle="rgb(255,0,0)";
 
 context.stroke();
 
-//方形
+//鏂瑰舰
 context.beginPath();
 context.rect(300,50,200,200);
 
@@ -43,7 +43,7 @@ context.lineCap="round"
 
 context.stroke();
 
-//五角星
+//浜旇鏄�
 context.beginPath();
 for(var i=0;i<5;i++){
 	context.lineTo(Math.cos((18+i*72)/180*Math.PI)*120+1000, 
