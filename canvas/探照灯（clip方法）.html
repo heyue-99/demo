@@ -1,8 +1,8 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="gb2312">
-<title>Ì½ÕÕµÆ£¨clip·½·¨£©</title>
+<meta charset="UTF-8">
+<title>æ¢ç…§ç¯ï¼ˆclipæ–¹æ³•ï¼‰</title>
 </head>
 
 <body>
@@ -23,39 +23,39 @@ window.onload=function(){
 }
 
 
-//¸Ã·½·¨ÓÃÀ´»æÖÆÍ¼ĞÎ
+//è¯¥æ–¹æ³•ç”¨æ¥ç»˜åˆ¶å›¾å½¢
 function drawBall(cxt){
 	var canvas = cxt.canvas;
-	//Çå¿Õ»­²¼
+	//æ¸…ç©ºç”»å¸ƒ
 	cxt.clearRect(0,0,canvas.width,canvas.height);
 	
 	cxt.save();
 
-	//»æÖÆÒ»¸öÓëµ±Ç°canvasÒ»Ñù´óµÄ¾ØĞÎ
+	//ç»˜åˆ¶ä¸€ä¸ªä¸å½“å‰canvasä¸€æ ·å¤§çš„çŸ©å½¢
 	cxt.beginPath();
-	cxt.fillStyle="#000";//ºÚÉ«±³¾°
+	cxt.fillStyle="#000";//é»‘è‰²èƒŒæ™¯
 	cxt.fillRect(0,0,canvas.width,canvas.height);
 	cxt.closePath();
 	
-	//´ÓÔ­À´µÄ»­²¼ÖĞ¼ô¼­³öÒ»¸öÔ²ĞÎ
+	//ä»åŸæ¥çš„ç”»å¸ƒä¸­å‰ªè¾‘å‡ºä¸€ä¸ªåœ†å½¢
 	cxt.beginPath();
 	cxt.arc(circular.x,circular.y,circular.radius,0,Math.PI*2);
-	//cxt.fillStyle="#fff";//°×É«±³¾°
+	//cxt.fillStyle="#fff";//ç™½è‰²èƒŒæ™¯
 	//cxt.fill();
-	//clip():´ÓÔ­Ê¼»­²¼ÖĞ¼ôÇĞÈÎÒâĞÎ×´ºÍ³ß´ç¡£
-	//Ò»µ©¼ôÇĞÁËÄ³¸öÇøÓò£¬ÔòËùÓĞÖ®ºóµÄ»æÍ¼¶¼»á±»ÏŞÖÆÔÚ±»¼ôÇĞµÄÇøÓòÄÚ£¨²»ÄÜ·ÃÎÊ»­²¼ÉÏµÄÆäËûÇøÓò£©
+	//clip():ä»åŸå§‹ç”»å¸ƒä¸­å‰ªåˆ‡ä»»æ„å½¢çŠ¶å’Œå°ºå¯¸ã€‚
+	//ä¸€æ—¦å‰ªåˆ‡äº†æŸä¸ªåŒºåŸŸï¼Œåˆ™æ‰€æœ‰ä¹‹åçš„ç»˜å›¾éƒ½ä¼šè¢«é™åˆ¶åœ¨è¢«å‰ªåˆ‡çš„åŒºåŸŸå†…ï¼ˆä¸èƒ½è®¿é—®ç”»å¸ƒä¸Šçš„å…¶ä»–åŒºåŸŸï¼‰
 	cxt.clip();
 	cxt.closePath();
 	
-	//»æÖÆÄÚÈİ
+	//ç»˜åˆ¶å†…å®¹
 	var image=new Image();
-	image.src="../img/ÇÙ.jpg";
+	image.src="../img/ç´.jpg";
 	cxt.drawImage(image,0,0,canvas.width,canvas.height);
 
 	cxt.restore();
 }
 	
-//¸üĞÂÔ²ĞÎÔË¶¯Â·¾¶
+//æ›´æ–°åœ†å½¢è¿åŠ¨è·¯å¾„
 function update(width,height){
 	circular.x +=circular.vx;
 	circular.y +=circular.vy;
