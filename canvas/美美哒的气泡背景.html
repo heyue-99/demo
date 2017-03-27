@@ -1,8 +1,8 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="gb2312">
-<title>美美哒的气泡背景</title>
+<meta charset="UTF-8">
+<title>缇庣編鍝掔殑姘旀场鑳屾櫙</title>
 </head>
 
 <body>
@@ -20,17 +20,17 @@ window.onload=function(){
 	
 	for(var i=0;i<100;i++){
 		
-		var r = Math.floor(Math.random() * 255);   //取整
+		var r = Math.floor(Math.random() * 255);   //鍙栨暣
         var g = Math.floor(Math.random() * 255);   
         var b = Math.floor(Math.random() * 255);  
 		var x=Math.random()*canvas.width;
 		var y=Math.random()*canvas.height;
 		var R=Math.random()*80;
 		
-        context.fillStyle = "rgb(" + r + "," + g + "," + b + ")";   	//字符串连接
+        context.fillStyle = "rgb(" + r + "," + g + "," + b + ")";   	//瀛楃涓茶繛鎺�
 
 		
-		context.beginPath();                                 //每次fill要beginPath
+		context.beginPath();                                 //姣忔fill瑕乥eginPath
 		context.arc(x,y,R,0,Math.PI*2);
 		context.fill();
 		}
