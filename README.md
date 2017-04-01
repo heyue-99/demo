@@ -1,5 +1,7 @@
-»ùÓÚcanvas¡¢javascript¡¢bootstrapµÄĞ¡demo¡£
-±ß¿´Êé±ß×öµãĞ¡Á·Ï°¡£
-canvasµÄdemoÀ´×ÔRob HawkesµÄÊé¡¶HTML5 Canvas»ù´¡½Ì³Ì¡·£»
-bootstrapµÄdemoÀ´×Ô¡¶bootstrapÊµÕ½¡·£»
-javascriptµÄdemoÀ´×Ô¡¶javascript¸ß¼¶³ÌĞòÉè¼Æ¡·ºÍÍøÉÏµÄÀı×Ó£¬±ÈÈçºÀÇé´óÈËµÄhttp://jikeytang.github.io/£»
+æˆ‘çš„demoé›†åˆ  
+====
+åŸºäºcanvasã€javascriptã€bootstrapçš„å°demo   
+è¾¹çœ‹ä¹¦è¾¹åšç‚¹å°ç»ƒä¹ 
+canvasçš„demoæ¥è‡ªRob Hawkesçš„ä¹¦ã€ŠHTML5 CanvasåŸºç¡€æ•™ç¨‹ã€‹   
+bootstrapçš„demoæ¥è‡ªã€Šbootstrapå®æˆ˜ã€‹
+javascriptçš„demoæ¥è‡ªã€Šjavascripté«˜çº§ç¨‹åºè®¾è®¡ã€‹å’Œç½‘ä¸Šçš„ä¾‹å­ï¼Œæ¯”å¦‚è±ªæƒ…å¤§äººçš„[demo](http://jikeytang.github.io/)
